@@ -1,0 +1,266 @@
+* {
+	box-sizing: border-box;
+}
+
+:root {
+	--primary-color: #008768;
+	--secondary-color: #00876785;
+	--tertiary-color: #078269;
+	--quaternary-color: #0eeabe;
+	--alternate-color: #e0b354;
+	--text-color: #2b2b2b;
+	--border-color: #ddd;
+	--font-weight: 300;
+	--font-weight-heading: 400;
+	--font-size: 16px;
+}
+
+body {
+	font-family: 'Rubik', sans-serif;
+	font-weight: var(--font-weight);
+	font-size: var(--font-size);
+	line-height: 1.6;
+	margin: 0 15px;
+}
+
+h1 {
+	font-size: 30px;
+	font-weight: var(--font-weight-heading);
+}
+
+h2 {
+	font-size: 24px;
+	font-weight: var(--font-weight-heading);
+}
+
+h3 {
+	font-size: 18px;
+	font-weight: var(--font-weight-heading);
+}
+
+p {
+	color: var(--text-color);
+}
+
+a,
+.link {
+	color: var(--primary-color);
+	transition: .5s opacity;
+}
+
+
+a:visited,
+.link:visited {
+	/*visitied link*/
+	color: var(--tertiary-color);
+}
+
+a:hover,
+a:focus,
+.link:hover,
+.link:visited {
+	/* No underlining when hovering over a link */
+	text-decoration: none;
+	opacity: .5;
+}
+
+a:active .link:active {
+	/* selected link*/
+	color: var(--quaternary-color);
+}
+
+.italic {
+	font-weight: var(--font-weight);
+	font-style: italic;
+	color: var(--tertiary-color);
+}
+
+button,
+.button {
+	/* overwrites browser defaults and resets the border */
+	border: none;
+	/* takes the font from the outer container */
+	font-family: inherit;
+	/* styles the background color, font color, and text decoration (underline, etc.) of the button */
+	background-color: var(--primary-color);
+	color: #fff;
+	text-decoration: none;
+	/*adds spacing to the button (this will be discussed more in-depth later) */
+	padding: 10px;
+	border-radius: 3px;
+	/* gives the button a bottom border with a width of 2px, a type of solid, and a color in RGBA format */
+	border-bottom: 2px solid var(--border-color);
+	transition: .5s opacity;
+}
+
+button:hover,
+button:focus,
+.button:hover,
+.button:focus {
+	/* lets the mouse appear as a hand*/
+	cursor: pointer;
+	/* reduce opacity to light up*/
+	opacity: 0.8;
+}
+
+.button__secondary {
+	background-color: var(--alternate-color);
+	color: var(--text-color);
+}
+
+.logo {
+	float: left;
+	height: 100px;
+	border-radius: 50%;
+}
+
+.page-footer {
+	clear: both;
+	display: flex;
+	flex-direction: column;
+}
+
+.profile {
+	text-align: center;
+	max-width: 700px;
+	margin: 0 auto;
+}
+
+.page-header {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	align-items: center;
+}
+
+.page-header__item {
+	flex: 0 1 50px;
+	align-items: center;
+}
+
+.page-header__item:last-child {
+	flex-grow: 1;
+	text-align: right;
+}
+
+.navigation-list {
+	list-style-type: none;
+}
+
+.navigation-list li {
+	display: inline-block;
+}
+
+.navigation-list__item--active {
+	text-decoration: none;
+}
+
+nav ul {
+	padding: 0;
+}
+
+nav ul li {
+	margin: 0 5px;
+}
+
+.grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-gap: 10px;
+}
+
+.grid__item {
+	background-color: var(--border-color);
+	text-align: center;
+}
+
+.page-footer {
+	display: flex;
+	width: 100%;
+	padding: 10px;
+}
+
+.page-footer__item {
+	text-align: center;
+}
+
+table {
+	padding: 0;
+}
+
+th,
+td {
+	max-width: inherit;
+	border-bottom: 1px solid var(--border-color);
+}
+
+th {
+	background-color: var(--secondary-color);
+}
+
+tr:hover {
+	background-color: var(--secondary-color);
+}
+
+@media all and (max-width: 450px) {
+	.page-header {
+		flex-direction: column;
+	}
+}
+
+@media all and (min-width: 450px) and (max-width: 750px) {
+	.grid {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+@media all and (max-width: 450px) {
+	.grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media all and (max-width: 750px) {
+	.grid {
+		grid-gap: 10px;
+	}
+
+	.grid__item:last-child {
+		grid-column: auto/auto;
+		grid-row: auto/auto;
+	}
+
+	h1 {
+		font-size: 22px;
+	}
+}
+
+table {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+form {
+	margin-top: 50px;
+	padding: 20px;
+	background-color: var(--secondary-color);
+}
+
+form * {
+	width: 100%;
+}
+
+form input,
+form textarea {
+	margin-bottom: 20px;
+}
+
+main {
+	max-width: 1000px;
+	margin: 0 auto;
+	/* to center it */
+}
+
+.profile_image {
+	max-height: 150px;
+}
