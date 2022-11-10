@@ -20,8 +20,11 @@ let pokemonList = [
 
 for (let i = 0; i < 3; i++) {
   if (pokemonList[i].height <= 3)
-    document.write(`${pokemonList[i].name} (height: ${pokemonList[i].height}, `);
+    document.write(`${pokemonList[i].name} (height: ${pokemonList[i].height}), `);
   else {
     document.write(`${pokemonList[i].name} (height: ${pokemonList[i].height}) - Wow, that's big!, `);
   }
+  //Add <p> so each iteration starts a new line
+  document.write('<p>');
+
 }
