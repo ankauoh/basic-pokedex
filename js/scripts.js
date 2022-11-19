@@ -47,14 +47,14 @@ let pokemonRepository = (function () {
   }
 
   function loadDetails(item) {
-    let url = item.detailsUrl;
+    let url = item.detailsURL;
     return fetch(url).then(function (response) {
       return response.json();
     }).then(function (details) {
       //add details to the item here
       item.imageUrl = details.sprites.front_default;
       item.height = details.height;
-      item.types = detail.types;
+      item.types = details.types;
     }).catch(function (e) {
       console.error(e);
     });
