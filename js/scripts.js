@@ -1,22 +1,7 @@
 //IIFE to protect the pokemon list, with key functions
 let pokemonRepository = (function () {
-  let pokemonList = [
-    {
-      name: 'Bulbasaur',
-      height: 4,
-      type: ['grass', 'poison']
-    },
-    {
-      name: 'Pikachu',
-      height: 3,
-      type: ['electric']
-    },
-    {
-      name: 'Charmander',
-      height: 4,
-      type: ['fire']
-    }
-  ];
+  let pokemonList = [];
+  let apiURL = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 
   function add(pokemon) {
     pokemonList.push(pokemon);
@@ -40,17 +25,55 @@ let pokemonRepository = (function () {
   }
   //function referenced above to console log the details
   function showDetails(pokemon) {
-    console.log(pokemon);
+    loadDetails(pokemon).then(function () {
+      console.log(pokemon);
+    });
+  }
+
+  function loadList() {
+    return fetch(apiURL).then(function (response) {
+      return response.json();
+    }).then(function (json) {
+      json.results.forEach(function (item) {
+        let pokemon = {
+          name: item.name,
+          detailsURL: item.url
+        };
+        add(pokemon);
+      });
+    }).catch(function (e) {
+      console.error(e);
+    })
+  }
+
+  function loadDetails(item) {
+    let url = item.detailsUrl;
+    return fetch(url).then(function (response) {
+      return response.json();
+    }).then(function (details) {
+      //add details to the item here
+      item.imageUrl = details.sprites.front_default;
+      item.height = details.height;
+      item.types = detail.types;
+    }).catch(function (e) {
+      console.error(e);
+    });
   }
 
   return {
     add: add,
     getAll: getAll,
-    addListItem: addListItem
+    addListItem: addListItem,
+    loadList: loadList,
+    loadDetails: loadDetails
   };
 })();
 
-//This forEach loop references within the IIFE andcalls the addListItem function
-pokemonRepository.getAll().forEach(function (pokemon) {
-  pokemonRepository.addListItem(pokemon);
+pokemonRepository.loadList().then(function () {
+  //data is loaded
+  // loadList calls the repository, but won't render until all the details are returned trhough forEach
+  //This forEach loop references within the IIFE andcalls the addListItem function
+  pokemonRepository.getAll().forEach(function (pokemon) {
+    pokemonRepository.addListItem(pokemon);
+  });
 });
