@@ -1,0 +1,13 @@
+/* removes bullet points*/
+.pokemon-list {
+	list-style: none;
+}
+/*adds space between rows*/
+.pokemon-list > li {
+  margin-bottom: 30px;
+}
+/*button will fill the space with padding*/
+.pokemon-list > li > button {
+  width: 100%;
+  padding: 10px;
+}

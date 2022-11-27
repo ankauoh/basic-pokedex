@@ -15,7 +15,7 @@ let pokemonRepository = (function () {
     let pokemonList = document.querySelector('.pokemon-list');
     let listPokemon = document.createElement('li');
     let button = document.createElement('button');
-    listPokemon.classList.add('list-group-item');
+    listPokemon.classList.add('col-md-3');
     button.classList.add('btn', 'btn-primary');
     button.innerText = pokemon.name;
     button.dataset.toggle = "modal";
